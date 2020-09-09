@@ -1,0 +1,30 @@
+<h1>Heroes <small>de Marvel y DC</small></h1>
+<hr />
+<div class="card-columns">
+  <div
+    class="card animated fadeIn fast"
+    *ngFor="let heroe of heroes; let i = index"
+  >
+    <!-- La imagen se puede cargar de la siguiente manera: con Interpolacion {{}} -->
+    <!-- <img src="{{heroe.img}}" class="card-img-top" alt="..."> -->
+    <!-- O bien de la siguiente :D.  Encerrar a un atributo con [] indica que lo va a manejar Angular, entonces podemos usar nuestra variable heroe del primer div para sacar los atributos que necesitemos!-->
+    <img [src]="heroe.img" class="card-img-top" [alt]="heroe.nombre" />
+    <div class="card-body">
+      <h5 class="card-title">{{ heroe.nombre }}</h5>
+      <p class="card-text">
+        {{ heroe.bio }}
+      </p>
+      <p class="card-text">
+        <small class="text-muted">{{ heroe.aparicion }}</small>
+      </p>
+      <button
+        (click)="verHeroe(i)"
+        class="btn btn-outline-primary btn-block"
+        type="button"
+      >
+        Ver mas...
+      </button>
+      <!-- <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">Ver mas...</a> -->
+    </div>
+  </div>
+</div>
